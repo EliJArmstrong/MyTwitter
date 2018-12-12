@@ -32,7 +32,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Flat map is now deprecated. The fix is to use compactMap. This is to discourage people from useding flat map when a regaler map will do. In this case a map might due but just incase I will keep the compactMap.
-2.
+2. The logout func: We are told to use a static method but then told to use APIManager.sharedInstance!.logout() which can not be called this way.
 
 ## Video Walkthrough
 
