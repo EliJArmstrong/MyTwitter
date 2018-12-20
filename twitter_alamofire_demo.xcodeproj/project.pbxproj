@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		547221C96829E6F537FCE2FE /* Pods_twitter_alamofire_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCA05DC47A45B9943F23F5F /* Pods_twitter_alamofire_demoUITests.framework */; };
 		6C028F67F4B75B9CE911AB20 /* Pods_twitter_alamofire_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F2EB27736B82E6AF0082B /* Pods_twitter_alamofire_demo.framework */; };
+		B70EE2C221CB7211007890F9 /* TweetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70EE2C121CB7211007890F9 /* TweetDetailVC.swift */; };
+		B70EE2C421CB8564007890F9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70EE2C321CB8564007890F9 /* ComposeViewController.swift */; };
+		B70EE2C621CBA1FE007890F9 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70EE2C521CBA1FE007890F9 /* ProfileVC.swift */; };
 		B750829F21C0EBC6001A307B /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B750829E21C0EBC6001A307B /* TweetCell.swift */; };
 		BE4D1BB82168078300E21A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4D1BB72168078300E21A30 /* User.swift */; };
 		BE4D1BBA2168082300E21A30 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4D1BB92168082300E21A30 /* Tweet.swift */; };
@@ -50,6 +53,9 @@
 		A0274E4BBA7E3A768A46223E /* Pods-twitter_alamofire_demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter_alamofire_demoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter_alamofire_demoTests/Pods-twitter_alamofire_demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA8B2B7251F8A233C7185620 /* Pods-twitter_alamofire_demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter_alamofire_demoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter_alamofire_demoUITests/Pods-twitter_alamofire_demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AFBE91109514C5BA32FE14C3 /* Pods_twitter_alamofire_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_twitter_alamofire_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70EE2C121CB7211007890F9 /* TweetDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailVC.swift; sourceTree = "<group>"; };
+		B70EE2C321CB8564007890F9 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		B70EE2C521CBA1FE007890F9 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		B750829E21C0EBC6001A307B /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		BE4D1BB72168078300E21A30 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BE4D1BB92168082300E21A30 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -202,6 +208,9 @@
 			children = (
 				BEBC8367211F4199003A5FE1 /* TimelineViewController.swift */,
 				ED1AFD601E94496E00FD4B90 /* LoginViewController.swift */,
+				B70EE2C121CB7211007890F9 /* TweetDetailVC.swift */,
+				B70EE2C321CB8564007890F9 /* ComposeViewController.swift */,
+				B70EE2C521CBA1FE007890F9 /* ProfileVC.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -425,6 +434,7 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/OAuthSwiftAlamofire/OAuthSwiftAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKPlaceholderTextView/RSKPlaceholderTextView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -433,6 +443,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwiftAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKPlaceholderTextView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -446,6 +457,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B70EE2C621CBA1FE007890F9 /* ProfileVC.swift in Sources */,
+				B70EE2C421CB8564007890F9 /* ComposeViewController.swift in Sources */,
+				B70EE2C221CB7211007890F9 /* TweetDetailVC.swift in Sources */,
 				ED1AFD611E94496E00FD4B90 /* LoginViewController.swift in Sources */,
 				B750829F21C0EBC6001A307B /* TweetCell.swift in Sources */,
 				BEBC8368211F4199003A5FE1 /* TimelineViewController.swift in Sources */,

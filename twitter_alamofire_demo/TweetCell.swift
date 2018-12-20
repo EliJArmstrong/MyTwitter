@@ -23,6 +23,7 @@ class TweetCell: UITableViewCell {
             refreshData()
         }
     }
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var realname: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -38,7 +39,10 @@ class TweetCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        self.selectionStyle = .none
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.clear
+        self.selectedBackgroundView = backgroundView
     }
     
     @IBAction func didTapFavorite(_ sender: Any) {

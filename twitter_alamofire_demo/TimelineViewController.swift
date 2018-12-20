@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
-    
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ComposeViewControllerDelegate, TweetDetailDelegate{
+
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -27,6 +27,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
     }
 
+//    override func viewDidAppear(_ animated: Bool) {
+//        fetchTweets()
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,7 +81,6 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
@@ -88,7 +91,33 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? TweetDetailVC{
+            let cell = sender as! UITableViewCell
+            if let index = tableView.indexPath(for: cell){
+                vc.tweet = tweets[index.row]
+                vc.delegate = self
+                vc.row = index.row
+                print("Hello1")
+            }
+        } else if let navVC = segue.destination as? UINavigationController{
+            let vc = navVC.viewControllers.first as! ComposeViewController
+            vc.delegate = self
+            print("Hello2")
+        }
+        print("Hello3")
+    }
     
+    func did(post: Tweet) {
+        tweets.insert(post, at: 0)
+        tableView.reloadData()
+    }
+    
+    
+    func update(tweet: Tweet, row: Int) {
+        tweets[row] = tweet
+        tableView.reloadData()
+    }
     
     /*
     // MARK: - Navigation

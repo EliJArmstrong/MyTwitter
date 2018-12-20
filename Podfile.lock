@@ -7,6 +7,7 @@ PODS:
   - OAuthSwiftAlamofire (0.2.0):
     - Alamofire
     - OAuthSwift
+  - RSKPlaceholderTextView (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - KeychainAccess
   - OAuthSwift
   - OAuthSwiftAlamofire
+  - RSKPlaceholderTextView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - KeychainAccess
     - OAuthSwift
     - OAuthSwiftAlamofire
+    - RSKPlaceholderTextView
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -29,7 +32,8 @@ SPEC CHECKSUMS:
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
   OAuthSwiftAlamofire: e51f11ff579dd4293bfe2a1a24c658caad4dac35
+  RSKPlaceholderTextView: 15f1dc1883e103ea605874b863f19ff6b08496d5
 
-PODFILE CHECKSUM: da4acc3b47394fbe5b94f01146314fd3509f08e3
+PODFILE CHECKSUM: f582c240570deffa4393eb05d2079a033b6d0d48
 
 COCOAPODS: 1.5.3
