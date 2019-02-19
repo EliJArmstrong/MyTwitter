@@ -9,15 +9,21 @@
 import UIKit
 import AlamofireImage
 
-class TweetCell: UITableViewCell {
+class TweetCellWithImage: UITableViewCell {
 
     var tweet: Tweet!{
         didSet{
+            tweetMedia.isHidden = false
             realname.text = tweet.user?.name
             userName.text = "@\(tweet.user?.screenName ?? "")"
             tweetMessage.text = tweet.text
             if let url = tweet.user?.userImageUrl{
                 userImage.af_setImage(withURL: url)
+            }
+            if let url_media = tweet.media_url{
+                tweetMedia.af_setImage(withURL: url_media)
+            } else{
+                tweetMedia.isHidden = true
             }
             date.text = "• \(tweet.createdAtString ?? "")"
             refreshData()
@@ -31,6 +37,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetMessage: UILabel!
     @IBOutlet weak var retweetBtn: UIButton!
     @IBOutlet weak var favBtn: UIButton!
+    @IBOutlet weak var tweetMedia: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

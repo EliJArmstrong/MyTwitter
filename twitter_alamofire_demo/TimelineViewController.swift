@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ComposeViewControllerDelegate, TweetDetailDelegate{
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ComposeViewControllerDelegate/*, TweetDetailDelegate*/{
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,13 +23,15 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 150
         fetchTweets()
         // Do any additional setup after loading the view.
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        fetchTweets()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,9 +88,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.tweet = tweets[indexPath.row]
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCellWithImage", for: indexPath) as! TweetCellWithImage
+            cell.tweet = tweets[indexPath.row]
+            return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,16 +98,13 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = sender as! UITableViewCell
             if let index = tableView.indexPath(for: cell){
                 vc.tweet = tweets[index.row]
-                vc.delegate = self
+                //vc.delegate = self
                 vc.row = index.row
-                print("Hello1")
             }
         } else if let navVC = segue.destination as? UINavigationController{
             let vc = navVC.viewControllers.first as! ComposeViewController
             vc.delegate = self
-            print("Hello2")
         }
-        print("Hello3")
     }
     
     func did(post: Tweet) {
@@ -114,10 +113,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    func update(tweet: Tweet, row: Int) {
-        tweets[row] = tweet
-        tableView.reloadData()
-    }
+//    func update(tweet: Tweet, row: Int) {
+//        //tweets[row] = tweet
+//        tableView.reloadData()
+//    }
     
     /*
     // MARK: - Navigation

@@ -15,8 +15,8 @@ import KeychainAccess
 class APIManager: SessionManager {
     
     // MARK: TODO: Add App Keys
-    static let consumerKey = ""
-    static let consumerSecret = ""
+    static let consumerKey = "uFTmFW66AAMEUwx3rZlZDMSCf"
+    static let consumerSecret = "LtlxIoQpBvHcqjpSMIA9Gs2E9wCJbr7xkx9EpSdBYoNedaZUgh"
 
     static let requestTokenURL = "https://api.twitter.com/oauth/request_token"
     static let authorizeURL = "https://api.twitter.com/oauth/authorize"
@@ -83,7 +83,9 @@ class APIManager: SessionManager {
 //            return
 //        }
 
-        request(URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, method: .get)
+        let parameters = ["tweet_mode" : "extended"]
+        
+        request(URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, method: .get, parameters: parameters as Parameters)
             .validate()
             .responseJSON { (response) in
                 switch response.result {
@@ -111,7 +113,7 @@ class APIManager: SessionManager {
     }
     
     func getMoreTweets(sinceId: Int64, completion: @escaping ([Tweet]?, Error?) -> ()) {
-        let parameters = ["max_id": sinceId]
+        let parameters: [String: Any] = ["max_id": sinceId - 1, "tweet_mode" : "extended"]
         request(URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, method: .get, parameters: parameters as Parameters)
             .validate()
             .responseJSON { (response) in
@@ -131,10 +133,9 @@ class APIManager: SessionManager {
                     UserDefaults.standard.set(data, forKey: "hometimeline_tweets")
                     UserDefaults.standard.synchronize()
                     
-                    var tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
+                    let tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
                         Tweet(dictionary: dictionary)
                     })
-                    tweets.remove(at: 0)
                     completion(tweets, nil)
                 }
         }
@@ -148,7 +149,6 @@ class APIManager: SessionManager {
         User.current = nil
         
         // TODO: 2. Deauthorize OAuth tokens
-        
         
         // 3. Post logout notification
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)

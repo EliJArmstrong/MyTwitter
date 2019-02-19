@@ -19,6 +19,7 @@ class Tweet: NSObject {
     var retweeted: Bool? // Configure retweet button
     var user: User? // Author of the Tweet
     var createdAtString: String? // String representation of date posted
+    var media_url: URL? // If there is media. It's url it will be stored here.
     
     // For Retweets
     var retweetedByUser: User?  // user who retweeted if tweet is retweet
@@ -37,7 +38,7 @@ class Tweet: NSObject {
         }
         
         id = dictionary["id"] as? Int64
-        text = dictionary["text"] as? String
+        text = dictionary["full_text"] as? String
         favoriteCount = dictionary["favorite_count"] as? Int
         favorited = dictionary["favorited"] as? Bool
         retweetCount = dictionary["retweet_count"] as? Int
@@ -45,6 +46,19 @@ class Tweet: NSObject {
         
         let user = dictionary["user"] as! [String: Any]
         self.user = User(dictionary: user)
+        
+        
+        let entities = dictionary["entities"] as! [String: Any]
+//        print(entities["media"] as? [[String: Any]])
+        if let media = entities["media"] as? [[String: Any]]{
+            //print(media)
+            let media1 = media[0]
+            let media_url_https = media1["media_url_https"] as? String
+            self.media_url = URL(string: media_url_https!)
+        }
+
+        
+        
         
         
         // Format createdAt date string

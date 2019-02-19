@@ -9,16 +9,16 @@
 import UIKit
 import AlamofireImage
 
-protocol TweetDetailDelegate : class {
-    func update(tweet : Tweet, row: Int)
-}
+//protocol TweetDetailDelegate : class {
+//    func update(tweet : Tweet, row: Int)
+//}
 
 class TweetDetailVC: UIViewController {
 
     
-    var tweet: Tweet!
+    var tweet: Tweet! // When the tweet is passed it's by reference not value.
     
-    weak var delegate: TweetDetailDelegate?
+//    weak var delegate: TweetDetailDelegate?
     
     var row: Int?
     
@@ -140,9 +140,9 @@ class TweetDetailVC: UIViewController {
         favLbl.text = "\(tweet.favoriteCount ?? 0)"
         retweetNumber.text = "\(tweet.retweetCount ?? 0)"
         
-        if(delegate != nil){
-            self.delegate!.update(tweet: tweet, row: row!)
-        }
+//        if(delegate != nil){
+//            self.delegate!.update(tweet: tweet, row: row!)
+//        }
         
     }
     
