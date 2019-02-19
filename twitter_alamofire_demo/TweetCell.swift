@@ -9,11 +9,11 @@
 import UIKit
 import AlamofireImage
 
-class TweetCellWithImage: UITableViewCell {
+class TweetCell: UITableViewCell {
 
     var tweet: Tweet!{
         didSet{
-            tweetMedia.isHidden = false
+            mediaImage.isHidden = false
             realname.text = tweet.user?.name
             userName.text = "@\(tweet.user?.screenName ?? "")"
             tweetMessage.text = tweet.text
@@ -21,15 +21,16 @@ class TweetCellWithImage: UITableViewCell {
                 userImage.af_setImage(withURL: url)
             }
             if let url_media = tweet.media_url{
-                tweetMedia.af_setImage(withURL: url_media)
+                mediaImage.af_setImage(withURL: url_media)
             } else{
-                tweetMedia.isHidden = true
+                mediaImage.isHidden = true
             }
             date.text = "• \(tweet.createdAtString ?? "")"
             refreshData()
         }
     }
     
+    @IBOutlet weak var mediaImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var realname: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -37,7 +38,6 @@ class TweetCellWithImage: UITableViewCell {
     @IBOutlet weak var tweetMessage: UILabel!
     @IBOutlet weak var retweetBtn: UIButton!
     @IBOutlet weak var favBtn: UIButton!
-    @IBOutlet weak var tweetMedia: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,7 +71,7 @@ class TweetCellWithImage: UITableViewCell {
             if let  error = error {
                 print("Error favoriting tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
-                print("Successfully favorited the following Tweet: \n\(tweet.text!)")
+                print("Successfully favorited the following Tweet: \n\(tweet.text ?? "empty tweet")")
             }
         }
     }
@@ -87,7 +87,7 @@ class TweetCellWithImage: UITableViewCell {
             if let  error = error {
                 print("Error unfavoriting tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
-                print("Successfully unfavorited the following Tweet: \n\(tweet.text!)")
+                print("Successfully unfavorited the following Tweet: \n\(tweet.text ?? "empty tweet")")
             }
         }
     }
@@ -100,7 +100,7 @@ class TweetCellWithImage: UITableViewCell {
             if let  error = error {
                 print("Error unretweet tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
-                print("Successfully unretweet the following Tweet: \n\(tweet.text!)")
+                print("Successfully unretweet the following Tweet: \n\(tweet.text ?? "empty tweet")")
             }
         }
     }
@@ -113,7 +113,7 @@ class TweetCellWithImage: UITableViewCell {
             if let  error = error {
                 print("Error retweet tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
-                print("Successfully retweet the following Tweet: \n\(tweet.text!)")
+                print("Successfully retweet the following Tweet: \n\(tweet.text ?? "empty tweet")")
             }
         }
     }

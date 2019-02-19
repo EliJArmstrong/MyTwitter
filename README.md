@@ -62,16 +62,18 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 # Project 6 - *MyTwitter*
 
-Time spent: **5** hours spent in total
+Time spent: **X** hours spent in total
 
 ## User Stories
 
 The following **MyTwitter** stories are completed:
 
-- [x] User can tap on a tweet to view it in a detail view, with controls to retweet, favorite, and reply (2pts)
-- [x] User can compose a new tweet by tapping on a compose button. (3pts)
-- [x] When composing a tweet, user sees a countdown for the number of characters remaining for the tweet (out of 140) (2pt)
-- [x] User can view their profile in a *profile tab* (3pts)
+- [ ] User can tap on a tweet to view it in a detail view, with controls to retweet, favorite, and reply (2pts)
+- [ ] User can compose a new tweet by tapping on a compose button. (3pts)
+- [ ] When composing a tweet, user sees a countdown for the number of characters remaining for the tweet (out of 140) (2pt)
+- [ ] User can view their profile in a *profile tab* (3pts)
+   - Contains the user header view: picture and tagline
+   - Contains a section with the users basic stats: # tweets, # following, # followers
 
 The following **stretch** features are implemented:
 
@@ -84,11 +86,20 @@ The following **stretch** features are implemented:
 - [ ] User sees embedded images in tweet if available. (3pts)
 - [ ] Pulling down the profile page should blur and resize the header image. (2pts)
 
+The following **additional** features are implemented:
+
+- [ ] List anything else that you can get done to improve the app functionality!
+
+Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
+
+1.
+2.
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src="/gifs/projectWalk.gif?raw=true" width="" alt= 'Video Walkthrough'>
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

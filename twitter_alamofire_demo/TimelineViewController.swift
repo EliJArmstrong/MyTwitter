@@ -88,9 +88,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCellWithImage", for: indexPath) as! TweetCellWithImage
-            cell.tweet = tweets[indexPath.row]
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

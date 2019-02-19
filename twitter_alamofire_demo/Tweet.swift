@@ -49,9 +49,7 @@ class Tweet: NSObject {
         
         
         let entities = dictionary["entities"] as! [String: Any]
-//        print(entities["media"] as? [[String: Any]])
         if let media = entities["media"] as? [[String: Any]]{
-            //print(media)
             let media1 = media[0]
             let media_url_https = media1["media_url_https"] as? String
             self.media_url = URL(string: media_url_https!)
