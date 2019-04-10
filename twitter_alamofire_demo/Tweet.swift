@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+/// This is a tweet object to store tweet data.
 class Tweet: NSObject {
     
     // MARK: Properties

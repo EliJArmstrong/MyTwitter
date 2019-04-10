@@ -12,8 +12,20 @@ class User: NSObject {
     
     var dictionary: [String: Any]?
     
-    private static var _current: User?
+    private static var _current: User? // the user user that is logged in.
     
+    var name: String? //  The name of the user
+    var screenName: String? // This is the "@" name for the user
+    var userImageUrl: URL? // The image url for the user
+    var userBackGroundUrl: URL? // Some users have a background Image
+    var statusCount : Int? // This holds the the amount of tweet the users has posted
+    var friendcount: Int? // This is the count of how acconts the user as following
+    var followercount : Int? // This is the count of how meny account are following the user.
+    
+    
+    /// If set the users data is stroed via user defaults.
+    /// When get is called and _current is nil the user data is stored and the _current data is returned.
+    /// else the users data is returned.
     static var current: User? {
         get {
             if _current == nil {
@@ -37,14 +49,9 @@ class User: NSObject {
         }
     }
     
-    var name: String?
-    var screenName: String?
-    var userImageUrl: URL?
-    var userBackGroundUrl: URL?
-    var statusCount : Int?
-    var friendcount: Int?
-    var followercount : Int?
     
+    
+    /// Converts a [String: Any] dictionary to a tweet.
     init(dictionary: [String : Any]) {
         super.init()
         self.dictionary = dictionary

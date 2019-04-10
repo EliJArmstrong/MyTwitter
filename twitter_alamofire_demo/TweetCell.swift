@@ -11,6 +11,7 @@ import AlamofireImage
 
 class TweetCell: UITableViewCell {
 
+    // When this varible is set from a tweet object the data is set to the variables of this cell
     var tweet: Tweet!{
         didSet{
             mediaImage.isHidden = false
@@ -30,20 +31,23 @@ class TweetCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var mediaImage: UIImageView!
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var realname: UILabel!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var tweetMessage: UILabel!
-    @IBOutlet weak var retweetBtn: UIButton!
-    @IBOutlet weak var favBtn: UIButton!
+    @IBOutlet weak var mediaImage: UIImageView! // UIImageView for media in a tweet
+    @IBOutlet weak var userImage: UIImageView! // UIImageView to the users profile image
+    @IBOutlet weak var realname: UILabel! // The "real name" of the user
+    @IBOutlet weak var userName: UILabel! // The user name of the user
+    @IBOutlet weak var date: UILabel! // To display the creation date of the tweet
+    @IBOutlet weak var tweetMessage: UILabel! // The tweets message
+    @IBOutlet weak var retweetBtn: UIButton! // The retweet button.
+    @IBOutlet weak var favBtn: UIButton! // The favorte button.
     
+    
+    // Default function like main or viewdidload
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    // This will keep the highlighing of a row from being seen.
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.selectionStyle = .none
@@ -52,21 +56,25 @@ class TweetCell: UITableViewCell {
         self.selectedBackgroundView = backgroundView
     }
     
+    // Will call a function based on the current state of favorite status.
     @IBAction func didTapFavorite(_ sender: Any) {
         (tweet.favorited!) ? unfavorited() : favorited()
     }
     
+    // Will call a function based on the current state of retweet status.
     @IBAction func didTapRetweet(_ sender: Any){
         (tweet.retweeted!) ? unretweet() : retweet()
     }
     
+    // Updates the count of the tweets (like) count + 1 in this case.
+    // This will also send a the update to the twitter API.
     func favorited(){
-        // TODO: Update the local tweet model
+        // Update the local tweet model
         tweet.favorited = true
         tweet.favoriteCount! += 1
-        // TODO: Update cell UI
+        // Update cell UI
         refreshData()
-        // TODO: Send a POST request to the POST favorites/create endpoint
+        // Send a POST request to the POST favorites/create endpoint
         APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
             if let  error = error {
                 print("Error favoriting tweet: \(error.localizedDescription)")
@@ -76,13 +84,16 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    
+    /// Updates the count of the tweets (like) count - 1 in this case.
+    /// This will also send a the update to the twitter API.
     func unfavorited(){
-        // TODO: Update the local tweet model
+        // Update the local tweet model
         tweet.favorited = false
         tweet.favoriteCount! -= 1
-        // TODO: Update cell UI
+        // Update cell UI
         refreshData()
-        // TODO: Send a POST request to the POST favorites/create endpoint
+        // Send a POST request to the POST favorites/create endpoint
         APIManager.shared.unfavorite(tweet) { (tweet: Tweet?, error: Error?) in
             if let  error = error {
                 print("Error unfavoriting tweet: \(error.localizedDescription)")
@@ -92,6 +103,8 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    /// Updates the count of the retweet count - 1 in this case.
+    /// This will also send a the update to the twitter API.
     func unretweet(){
         tweet.retweeted = false
         tweet.retweetCount! -= 1
@@ -105,6 +118,8 @@ class TweetCell: UITableViewCell {
         }
     }
     
+    // Updates the count of the retweet count + 1 in this case.
+    // This will also send a the update to the twitter API.
     func retweet(){
         tweet.retweeted = true
         tweet.retweetCount! += 1
@@ -118,7 +133,7 @@ class TweetCell: UITableViewCell {
         }
     }
     
-    
+    // This fuction updates the UI based on the favorited and retweeted variables
     private func refreshData(){
         (self.tweet.favorited!) ?
         favBtn.setImage(UIImage(named: "favor-icon-red"), for: .normal) : favBtn.setImage(UIImage(named: "favor-icon"), for: .normal)

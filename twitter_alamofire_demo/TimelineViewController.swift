@@ -46,8 +46,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let error = error {
                 print(error.localizedDescription)
-            }
-            else {
+            } else {
                 self.tweets = tweets!
                 self.tableView.reloadData()
             }

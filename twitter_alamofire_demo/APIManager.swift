@@ -22,7 +22,7 @@ class APIManager: SessionManager {
     static let authorizeURL = "https://api.twitter.com/oauth/authorize"
     static let accessTokenURL = "https://api.twitter.com/oauth/access_token"
     
-    static let callbackURLString = "alamoTwitter://"
+    static let callbackURLString = "alamoTwitter://" // This is the twitter api call back url.
     
     // MARK: Twitter API methods
     func login(success: @escaping () -> (), failure: @escaping (Error?) -> ()) {
